@@ -5,9 +5,8 @@ A simple productivity web app for content creators to manage ideas, schedule con
 ---
 
 ## 🌐 Live Website
-👉 https://username.github.io/creatorhub
+👉 https://bluefd.github.io/CreatorHub/
 
-(Replace "username" with your GitHub username)
 
 ---
 

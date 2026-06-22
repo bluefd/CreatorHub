@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreatorHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="gradient-bg"></div>
+
+  <!-- App Shell -->
+  <div id="app">
+
+    <!-- Header -->
+    <header class="header glass">
+      <span class="header-logo">CreatorHub</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-icon" id="themeIcon">☀️</span>
+      </button>
+    </header>
+
+    <!-- Pages -->
+    <main class="page-container">
+
+      <!-- DASHBOARD -->
+      <section class="page active" id="page-dashboard">
+        <div class="greeting">
+          <div class="greeting-sub">Good <span id="timeOfDay">morning</span>,</div>
+          <div class="greeting-name">Creator</div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card glass">
+            <div class="stat-num" id="stat-ideas">0</div>
+            <div class="stat-label">Total Ideas</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-num" id="stat-scheduled">0</div>
+            <div class="stat-label">Scheduled</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-num" id="stat-completed">0</div>
+            <div class="stat-label">Completed</div>
+          </div>
+        </div>
+
+        <div class="section-card glass">
+          <div class="section-label">Quick Capture</div>
+          <div class="quick-add-row">
+            <input type="text" id="quickInput" class="input-field" placeholder="Type an idea..." />
+            <button class="btn-icon" id="quickAddBtn">+</button>
+          </div>
+        </div>
+
+        <div class="section-header-row">
+          <span class="section-title">Ready to Post</span>
+          <button class="link-btn" onclick="switchPage('ideas')">View all &rsaquo;</button>
+        </div>
+        <div class="section-card glass" id="readyList">
+          <div class="empty-state">No ideas ready to post yet.</div>
+        </div>
+      </section>
+
+      <!-- IDEAS -->
+      <section class="page" id="page-ideas">
+        <div class="page-title">Ideas</div>
+
+        <div class="section-card glass">
+          <input type="text" id="ideaInput" class="input-field" placeholder="New idea title..." />
+          <div class="row-gap" style="margin-top:10px;">
+            <select id="ideaCategory" class="input-field select-field">
+              <option value="Gaming">Gaming</option>
+              <option value="Education">Education</option>
+              <option value="Viral">Viral</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Other">Other</option>
+            </select>
+            <button class="btn-primary" id="addIdeaBtn">Add Idea</button>
+          </div>
+        </div>
+
+        <div class="filter-pills" id="ideaFilters">
+          <button class="pill active" data-filter="All">All</button>
+          <button class="pill" data-filter="Gaming">Gaming</button>
+          <button class="pill" data-filter="Education">Education</button>
+          <button class="pill" data-filter="Viral">Viral</button>
+          <button class="pill" data-filter="Lifestyle">Lifestyle</button>
+        </div>
+
+        <div id="ideaList" class="item-list"></div>
+      </section>
+
+      <!-- SCHEDULER -->
+      <section class="page" id="page-scheduler">
+        <div class="page-title">Schedule</div>
+
+        <div class="section-card glass">
+          <input type="text" id="schedTitle" class="input-field" placeholder="Content title..." />
+          <div class="row-gap" style="margin-top:10px;">
+            <input type="date" id="schedDate" class="input-field" />
+            <select id="schedStatus" class="input-field select-field">
+              <option value="Draft">Draft</option>
+              <option value="Ready">Ready</option>
+              <option value="Posted">Posted</option>
+            </select>
+          </div>
+          <button class="btn-primary" style="margin-top:10px; width:100%;" id="addSchedBtn">Add to Schedule</button>
+        </div>
+
+        <div id="schedList" class="item-list"></div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section class="page" id="page-analytics">
+        <div class="page-title">Analytics</div>
+
+        <div class="stat-grid">
+          <div class="stat-card glass">
+            <div class="stat-num accent">124.5K</div>
+            <div class="stat-label">Total Views</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-num accent">6.2%</div>
+            <div class="stat-label">Engagement</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-num accent">Sat</div>
+            <div class="stat-label">Best Day</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-num accent">47</div>
+            <div class="stat-label">Total Posts</div>
+          </div>
+        </div>
+
+        <div class="section-card glass highlight-card">
+          <div class="section-label">Best Performing</div>
+          <div class="best-title">How I Gained 10K Subs in 30 Days</div>
+          <div class="best-meta">84.2K views &bull; 9.1% engagement &bull; YouTube</div>
+        </div>
+
+        <div class="section-card glass">
+          <div class="section-label">Platform Breakdown</div>
+          <div class="platform-list">
+            <div class="platform-row">
+              <span class="platform-name">YouTube</span>
+              <div class="bar-track"><div class="bar-fill" data-width="45" style="--bar-color:#ef4444;"></div></div>
+              <span class="platform-pct">45%</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-name">TikTok</span>
+              <div class="bar-track"><div class="bar-fill" data-width="30" style="--bar-color:#6366f1;"></div></div>
+              <span class="platform-pct">30%</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-name">Instagram</span>
+              <div class="bar-track"><div class="bar-fill" data-width="25" style="--bar-color:#ec4899;"></div></div>
+              <span class="platform-pct">25%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card glass">
+          <div class="section-label">Weekly Trend</div>
+          <div class="trend-chart" id="trendChart">
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="55"></div><span class="trend-label">Mon</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="70"></div><span class="trend-label">Tue</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="45"></div><span class="trend-label">Wed</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="90"></div><span class="trend-label">Thu</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="65"></div><span class="trend-label">Fri</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="100"></div><span class="trend-label">Sat</span></div>
+            <div class="trend-bar-wrap"><div class="trend-bar" data-h="80"></div><span class="trend-label">Sun</span></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Tab Bar -->
+    <nav class="tab-bar tab-bar-glass">
+      <button class="tab-btn active" data-page="dashboard" onclick="switchPage('dashboard')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="tab-btn" data-page="ideas" onclick="switchPage('ideas')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Ideas</span>
+      </button>
+      <button class="tab-btn" data-page="scheduler" onclick="switchPage('scheduler')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Schedule</span>
+      </button>
+      <button class="tab-btn" data-page="analytics" onclick="switchPage('analytics')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Analytics</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
